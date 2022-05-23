@@ -5,6 +5,23 @@
     padding: 0;
     outline: 0;
 }
+button{
+    color: #0099CC;
+    background: transparent;
+    border: 2px solid #0099CC;
+    border-radius: 6px;
+    cursor: pointer;
+    height: 2rem;
+    font-size: 20px;
+    margin: 4px 20px;
+    font-style: oblique;
+
+
+}
+button:hover {
+    background-color: #008CBA;
+    color: white;
+}
 .btns{
     grid-area: btns;
     display: grid;
@@ -17,7 +34,8 @@
 }
 .jugar{
     grid-area: jugar;
-    display: grid;
+    height: 4rem;
+    margin-top: 8px;
 }
 .btns2{
     grid-area: btns2;
