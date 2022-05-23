@@ -355,7 +355,58 @@ const drawScore = () => {
     ctx.font = '70px "Press Start 2P"'
     ctx.fillText(score.left, 165,185)
     ctx.fillText(score.right, 390,185)
-
+}
+function leftMoveUP(){
+    paddleLeft.moveUp(paddleLeft.y-96)
+    paddleLeft2a.moveUp(paddleLeft2a.y)
+    paddleLeft2b.moveUp(paddleLeft2b.y-90)
+    paddleLeft2c.moveUp(paddleLeft2c.y-180)
+    paddleLeft3a.moveUp(paddleLeft3a.y)
+    paddleLeft3b.moveUp(paddleLeft3b.y-70)
+    paddleLeft3c.moveUp(paddleLeft3c.y-140)
+    paddleLeft3d.moveUp(paddleLeft3d.y-210)
+    paddleLeft4a.moveUp(paddleLeft4a.y)
+    paddleLeft4b.moveUp(paddleLeft4b.y-90)
+    paddleLeft4c.moveUp(paddleLeft4c.y-180)
+}
+function leftMoveDown(){
+    paddleLeft.moveDown(paddleLeft.y+96)
+    paddleLeft2a.moveDown(paddleLeft2c.y)
+    paddleLeft2b.moveDown(paddleLeft2c.y)
+    paddleLeft2c.moveDown(paddleLeft2c.y)
+    paddleLeft3a.moveDown(paddleLeft3d.y)
+    paddleLeft3b.moveDown(paddleLeft3d.y)
+    paddleLeft3c.moveDown(paddleLeft3d.y)
+    paddleLeft3d.moveDown(paddleLeft3d.y)
+    paddleLeft4a.moveDown(paddleLeft4c.y)
+    paddleLeft4b.moveDown(paddleLeft4c.y)
+    paddleLeft4c.moveDown(paddleLeft4c.y)
+}
+function rightMoveUp(){
+    paddleRight.moveUp(paddleRight.y-96)
+    paddleRight4a.moveUp(paddleRight4a.y)
+    paddleRight4b.moveUp(paddleRight4b.y-90)
+    paddleRight4c.moveUp(paddleRight4c.y-180)
+    paddleRight3a.moveUp(paddleRight3a.y)
+    paddleRight3b.moveUp(paddleRight3b.y-70)
+    paddleRight3c.moveUp(paddleRight3c.y-140)
+    paddleRight3d.moveUp(paddleRight3d.y-210)
+    paddleRight2a.moveUp(paddleRight2a.y)
+    paddleRight2b.moveUp(paddleRight2b.y-90)
+    paddleRight2c.moveUp(paddleRight2c.y-180) 
+}
+function rightMoveDown(){
+    paddleRight.moveDown(paddleRight.y+96)
+    paddleRight4a.moveDown(paddleRight4c.y)
+    paddleRight4b.moveDown(paddleRight4c.y)
+    paddleRight4c.moveDown(paddleRight4c.y)
+    paddleRight3a.moveDown(paddleRight3d.y)
+    paddleRight3b.moveDown(paddleRight3d.y)
+    paddleRight3c.moveDown(paddleRight3d.y)
+    paddleRight3d.moveDown(paddleRight3d.y)
+    paddleRight2a.moveDown(paddleRight2c.y)
+    paddleRight2b.moveDown(paddleRight2c.y)
+    paddleRight2c.moveDown(paddleRight2c.y) 
 }
 
 // listeners
@@ -363,30 +414,10 @@ addEventListener('keydown', e=>{
     console.log(e)
         switch(e.keyCode){
         case 87:
-            paddleLeft.moveUp(paddleLeft.y-96)
-            paddleLeft2a.moveUp(paddleLeft2a.y)
-            paddleLeft2b.moveUp(paddleLeft2b.y-90)
-            paddleLeft2c.moveUp(paddleLeft2c.y-180)
-            paddleLeft3a.moveUp(paddleLeft3a.y)
-            paddleLeft3b.moveUp(paddleLeft3b.y-70)
-            paddleLeft3c.moveUp(paddleLeft3c.y-140)
-            paddleLeft3d.moveUp(paddleLeft3d.y-210)
-            paddleLeft4a.moveUp(paddleLeft4a.y)
-            paddleLeft4b.moveUp(paddleLeft4b.y-90)
-            paddleLeft4c.moveUp(paddleLeft4c.y-180)
+            leftMoveUP()
             break;
         case 83:
-            paddleLeft.moveDown(paddleLeft.y+96)
-            paddleLeft2a.moveDown(paddleLeft2c.y)
-            paddleLeft2b.moveDown(paddleLeft2c.y)
-            paddleLeft2c.moveDown(paddleLeft2c.y)
-            paddleLeft3a.moveDown(paddleLeft3d.y)
-            paddleLeft3b.moveDown(paddleLeft3d.y)
-            paddleLeft3c.moveDown(paddleLeft3d.y)
-            paddleLeft3d.moveDown(paddleLeft3d.y)
-            paddleLeft4a.moveDown(paddleLeft4c.y)
-            paddleLeft4b.moveDown(paddleLeft4c.y)
-            paddleLeft4c.moveDown(paddleLeft4c.y)
+            leftMoveDown()
             break;
         case 32:
             ballMoving(true)
@@ -395,32 +426,12 @@ addEventListener('keydown', e=>{
             ballMoving(true)
             break;
         case 38:
-            paddleRight.moveUp(paddleRight.y-96)
-            paddleRight4a.moveUp(paddleRight4a.y)
-            paddleRight4b.moveUp(paddleRight4b.y-90)
-            paddleRight4c.moveUp(paddleRight4c.y-180)
-            paddleRight3a.moveUp(paddleRight3a.y)
-            paddleRight3b.moveUp(paddleRight3b.y-70)
-            paddleRight3c.moveUp(paddleRight3c.y-140)
-            paddleRight3d.moveUp(paddleRight3d.y-210)
-            paddleRight2a.moveUp(paddleRight2a.y)
-            paddleRight2b.moveUp(paddleRight2b.y-90)
-            paddleRight2c.moveUp(paddleRight2c.y-180) 
+            rightMoveUp()
             break;
         case 40:
-            paddleRight.moveDown(paddleRight.y+96)
-            paddleRight4a.moveDown(paddleRight4c.y)
-            paddleRight4b.moveDown(paddleRight4c.y)
-            paddleRight4c.moveDown(paddleRight4c.y)
-            paddleRight3a.moveDown(paddleRight3d.y)
-            paddleRight3b.moveDown(paddleRight3d.y)
-            paddleRight3c.moveDown(paddleRight3d.y)
-            paddleRight3d.moveDown(paddleRight3d.y)
-            paddleRight2a.moveDown(paddleRight2c.y)
-            paddleRight2b.moveDown(paddleRight2c.y)
-            paddleRight2c.moveDown(paddleRight2c.y)   
+            rightMoveDown()
             break;
     }
 })
-document.getElementById("cancha").addEventListener("click", ballMoving(true))
+document.addEventListener("click", ballMoving(true))
 requestAnimationFrame(update)

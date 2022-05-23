@@ -1,0 +1,25 @@
+
+*, *:before, *:after{
+    box-sizing:border-box;
+    margin:0;
+    padding: 0;
+    outline: 0;
+}
+.btns{
+    grid-area: btns;
+    display: grid;
+    grid-template-areas:
+    "btns1 jugar btns2";
+}
+.btns1{
+    grid-area: btns1;
+    display: grid;
+}
+.jugar{
+    grid-area: jugar;
+    display: grid;
+}
+.btns2{
+    grid-area: btns2;
+    display: grid;
+}

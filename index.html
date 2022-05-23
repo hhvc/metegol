@@ -7,10 +7,26 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nunito+Sans:wght@200&family=PT+Sans&family=Press+Start+2P&display=swap');
     </style>
-    <title>paleta-paleta</title>
+<link rel="stylesheet" href="css/metegol.css">
+    <title>Metegol</title>
 </head>
 <body id="cancha">
+
     <canvas></canvas>
+
+    <div class="btns" id="btns">
+        <div class="btns1" id="izqBts">
+            <button onclick="leftMoveUP()">+</button>
+            <br>
+            <button onclick="leftMoveDown()">-</button>
+        </div>
+        <button class="jugar" onclick="ballMoving(true)">Jugar</button>
+        <div class="btns2" id="derBts">
+            <button onclick="rightMoveUP()">+</button>
+            <br>
+            <button onclick="rightMoveDown()">-</button>
+        </div>
+    </div>
 
     <script src="js/main.js"></script>
 </body>
