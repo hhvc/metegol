@@ -14,7 +14,6 @@ const score = {
     left: 0,
     right: 0
 }
-
 // Esta función crea las paletas. Acepta parámetro de ubicación "x" y "color".
 const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
     x,
@@ -111,6 +110,10 @@ const getBall=()=> ({
         ctx.stroke();
     }
 })
+
+function ballMoving(boolean){
+    ball.isMoving = boolean
+}
 
 // creo las paletas izquierda enviando posición eje x y color
 const paddleLeft=getPaddle({
@@ -335,13 +338,13 @@ const checkCollitions = () => {
     if(leftSoccerGoal.contains(ball)){
         ball.x=canvas.width/2
         ball.y=canvas.height/2
-        ball.isMoving = false,
+        ballMoving(false),
         score.right++
         failSound.play()
     } else if(rightSoccerGoal.contains(ball)){
         ball.x=canvas.width/2
         ball.y=canvas.height/2
-        ball.isMoving = false,
+        ballMoving(false),
         score.left++
         failSound.play()
     }
@@ -357,6 +360,7 @@ const drawScore = () => {
 
 // listeners
 addEventListener('keydown', e=>{
+    console.log(e)
         switch(e.keyCode){
         case 87:
             paddleLeft.moveUp(paddleLeft.y-96)
@@ -385,7 +389,10 @@ addEventListener('keydown', e=>{
             paddleLeft4c.moveDown(paddleLeft4c.y)
             break;
         case 32:
-            ball.isMoving = true
+            ballMoving(true)
+            break;
+        case 13:
+            ballMoving(true)
             break;
         case 38:
             paddleRight.moveUp(paddleRight.y-96)
@@ -415,5 +422,5 @@ addEventListener('keydown', e=>{
             break;
     }
 })
-
+document.getElementById("cancha").addEventListener("click", ballMoving(true))
 requestAnimationFrame(update)
