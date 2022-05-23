@@ -356,7 +356,7 @@ const drawScore = () => {
     ctx.fillText(score.left, 165,185)
     ctx.fillText(score.right, 390,185)
 }
-function leftMoveUP(){
+function leftMoveUp(){
     paddleLeft.moveUp(paddleLeft.y-96)
     paddleLeft2a.moveUp(paddleLeft2a.y)
     paddleLeft2b.moveUp(paddleLeft2b.y-90)
@@ -414,7 +414,7 @@ addEventListener('keydown', e=>{
     console.log(e)
         switch(e.keyCode){
         case 87:
-            leftMoveUP()
+            leftMoveUp()
             break;
         case 83:
             leftMoveDown()
