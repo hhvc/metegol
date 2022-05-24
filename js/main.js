@@ -289,9 +289,9 @@ const update = () => {
 const jugadorAuto = setInterval(jugandoAuto, 400);
 
 function jugandoAuto(){
-    if(paddleRight.y<ball.y+3){
+    if(paddleRight.y>ball.y+3){
         rightMoveUp()
-    } else if(paddleRight.y>ball.y-3){
+    } else if(paddleRight.y<ball.y-3){
         rightMoveDown()
     }
 }
