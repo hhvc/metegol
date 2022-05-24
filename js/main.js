@@ -441,7 +441,9 @@ addEventListener('keydown', e=>{
 
 addEventListener('touchmove',e=>{
     e.preventDefault();
-    if(e.touches.directionY<0){
+    let lastY
+    let currentY=e.originalEvent.touches[0].clientY
+    if(currentY > lastY){
         leftMoveUp()
     } else {leftMoveDown()}
 
