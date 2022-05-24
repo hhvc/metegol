@@ -445,9 +445,10 @@ addEventListener('touchstart',e=>{
 addEventListener('touchmove',e=>{
     e.preventDefault();
     lastY=e.targetTouches[0].clientY
-    if(currentY > lastY){
+    if(lastY > currentY+10 ){
         leftMoveDown()
     } else {leftMoveUp()}
+    return
 
 })
 
