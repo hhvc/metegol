@@ -15,11 +15,12 @@ const score = {
     right: 0
 }
 // Esta función crea las paletas u objetos que colisionarán con la pelota (jugadores y arcos). Acepta parámetro de ubicación "x", "color", etc..
-const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
+const getPaddle = ({x=0, y=0, w=10, h=18, color='orange', colorPelo='#3A2F0B'}) =>({
     x,
     y,
     w,
     h,
+    colorPelo,
     color,
     speed:15,
     draw() {
@@ -27,7 +28,7 @@ const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
         ctx.fillRect(this.x, this.y, this.w, this.h)
         ctx.closePath()
         ctx.beginPath()
-        ctx.fillStyle="black"
+        ctx.fillStyle=colorPelo //acá dibujo la cabeza de los jugadores con color "c"
         ctx.arc(this.x+(w/2), this.y+h/2, w/2, 0, 6.28319)
         ctx.fill()
         ctx.closePath()
@@ -124,22 +125,26 @@ function ballMoving(boolean){
 const paddleLeft=getPaddle({
     x:6,
     y: 150-9,
-    Color: 'yelow'
+    Color: 'yelow',
+    colorPelo: '#886A08'
 })
 
 const paddleLeft2a=getPaddle({
     x:86,
-    color: 'blue'
+    color: 'blue',
+    colorPelo:'#D7DF01'
 })
 const paddleLeft2b=getPaddle({
     x:86,
     y:90,
-    color: 'blue'
+    color: 'blue',
+    colorPelo:'#3B240B'
 })
 const paddleLeft2c=getPaddle({
     x:86,
     y:180,
-    color: 'blue'
+    color: 'blue',
+    colorPelo:'#3A2F0B'
 })
 
 const paddleLeft3a=getPaddle({
@@ -149,7 +154,8 @@ const paddleLeft3a=getPaddle({
 const paddleLeft3b=getPaddle({
     x:258,
     y:70,
-    color: 'blue'
+    color: 'blue',
+    colorPelo:'#B43104'
 })
 const paddleLeft3c=getPaddle({
     x:258,
@@ -212,27 +218,32 @@ const paddleRight3b=getPaddle({
 const paddleRight3c=getPaddle({
     x:344,
     y:140,
-    color: 'red'
+    color: 'red',
+    colorPelo:'black'
 })
 const paddleRight3d=getPaddle({
     x:344,
     y:210,
-    color: 'red'
+    color: 'red',
+    colorPelo:'#FACC2E'
 })
 
 const paddleRight2a=getPaddle({
     x:516,
-    color: 'red'
+    color: 'red',
+    colorPelo:'#292A0A'
 })
 const paddleRight2b=getPaddle({
     x:516,
     y:90,
-    color: 'red'
+    color: 'red',
+    colorPelo:'#FE642E'
 })
 const paddleRight2c=getPaddle({
     x:516,
     y:180,
-    color: 'red'
+    color: 'red',
+    colorPelo:'black'
 })
 
 const ball=getBall()
@@ -244,7 +255,7 @@ const update = () => {
     drawCourt()
     leftSoccerGoal.draw()
     rightSoccerGoal.draw()
-    drawScore()
+    escribirPuntaje()
     ball.draw()
 
     paddleLeft.draw()
@@ -366,7 +377,7 @@ const checkCollitions = () => {
     }
 }
 
-const drawScore = () => {
+const escribirPuntaje = () => {
     ctx.fillStyle = 'gray'
     ctx.font = '70px "Press Start 2P"'
     ctx.fillText(score.left, 165,185)
