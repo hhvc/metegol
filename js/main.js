@@ -438,19 +438,74 @@ addEventListener('keydown', e=>{
             break;
     }
 })
-let currentY, lastY
+
+
+
+// A partir de acá están las funciones touch a revisar
+
 addEventListener('touchstart',e=>{
     ballMoving(true)
-    currentY=e.originalEvent.touches[0].clientY
+    let yIni;
+        yIni = e.targetTouches[0].pageY;
+        addEventListener('touchstart', e=>{
+        if(e.targetTouches[0].pageY>yIni+30){
+            leftMoveUp()
+        } else if(e.targetTouches[0].pageY<yIni-30){
+            leftMoveDown()
+        }
+    })
 })
-addEventListener('touchmove',e=>{
-    e.preventDefault();
-    lastY=e.targetTouches[0].clientY
-    if(lastY > currentY+10 ){
-        leftMoveDown()
-    } else {leftMoveUp()}
-    return
 
-})
 
+// function startup() {
+//     const el = document.getElementById('cancha');
+//     el.addEventListener('touchstart', handleStart);
+//     el.addEventListener('touchend', handleEnd);
+//     el.addEventListener('touchcancel', handleCancel);
+//     el.addEventListener('touchmove', handleMove);
+//     log('Initialized.');
+// }
+// document.addEventListener("DOMContentLoaded", startup)
+
+// const ongoingTouches = []
+// console.log(ongoingTouches)
+
+// function handleStart(evt) {
+//     evt.preventDefault()
+//     log('touchstart.')
+//     const el = document.getElementById('cancha')
+//     const ctx = el.getContext('2d')
+//     const touches = evt.changedTouches
+
+//     for (let i = 0; i < touches.length; i++) {
+//         log(`touchstart: ${i}.`);
+//         ongoingTouches.push(copyTouch(touches[i]));
+//         const color = colorForTouch(touches[i]);
+//         log(`color of touch with id ${ touches[i].identifier } = ${ color }`);
+//         ctx.beginPath();
+//         ctx.arc(touches[i].pageX, touches[i].pageY, 4, 0, 2 * Math.PI, false);  // a circle at the start
+//         ctx.fillStyle = color;
+//         ctx.fill();
+//     }
+// }
+
+
+
+// let currentY, lastY
+// addEventListener('touchstart',e=>{
+//     ballMoving(true)
+//     currentY=e.TouchEvent.touches[0].clientY
+// })
+// addEventListener('touchmove',e=>{
+//     e.preventDefault();
+//     lastY=e.targetTouches[0].clientY
+//     if(lastY > currentY+10 ){
+//         leftMoveDown()
+//     } else if(lastY<currentY+10){
+//         leftMoveUp()
+//     }
+//     return
+// })
+
+// Ésta última línea si va (no es del touch)
 requestAnimationFrame(update)
