@@ -438,14 +438,16 @@ addEventListener('keydown', e=>{
             break;
     }
 })
-
+let currentY, lastY
+addEventListener('touchstart',e=>{
+    currentY=e.originalEvent.touches[0].clientY
+})
 addEventListener('touchmove',e=>{
     e.preventDefault();
-    let lastY
-    let currentY=e.originalEvent.touches[0].clientY
+    lastY=e.targetTouches[0].clientY
     if(currentY > lastY){
-        leftMoveUp()
-    } else {leftMoveDown()}
+        leftMoveDown()
+    } else {leftMoveUp()}
 
 })
 
