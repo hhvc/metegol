@@ -440,6 +440,7 @@ addEventListener('keydown', e=>{
 })
 let currentY, lastY
 addEventListener('touchstart',e=>{
+    ballMoving(true)
     currentY=e.originalEvent.touches[0].clientY
 })
 addEventListener('touchmove',e=>{
