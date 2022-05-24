@@ -64,7 +64,6 @@ const rightSoccerGoal=getPaddle({
     h:100,
     color: 'AntiqueWhite'
 })
-
 // función para crear pelota
 const getBall=()=> ({
     x:canvas.width/2,
@@ -272,9 +271,20 @@ const update = () => {
     paddleRight2c.draw()
     paddleRight.draw()
     checkCollitions()
-
     requestAnimationFrame(update)
 }
+
+// A través del "jugadorAuto" genero un intervalo para que se muevan los jugadores de la derecha
+const jugadorAuto = setInterval(jugandoAuto, 400);
+
+function jugandoAuto(){
+    if(paddleRight.y<ball.y+3){
+        rightMoveUp()
+    } else if(paddleRight.y>ball.y-3){
+        rightMoveDown()
+    }
+}
+
 
 // aux functions (dibujo la cancha)
 const drawCourt=() => {
