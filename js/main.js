@@ -444,10 +444,12 @@ addEventListener('keydown', e=>{
 // A partir de acá están las funciones touch a revisar
 
 addEventListener('touchstart',e=>{
+    e.preventDefault()
     ballMoving(true)
     let yIni;
         yIni = e.targetTouches[0].pageY;
         addEventListener('touchstart', e=>{
+            e.preventDefault()
         if(e.targetTouches[0].pageY>yIni+30){
             leftMoveUp()
         } else if(e.targetTouches[0].pageY<yIni-30){
