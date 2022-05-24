@@ -1,20 +1,20 @@
-const canvas=document.querySelector('canvas')
-canvas.width=612
-canvas.height=300
+// para que sea responsivo sin pixelarse, doy ancho y altura por defecto al canvas en el HTML (de no poner nada por defecto toma 300*150), adapto medidas a la pantalla con CSS, tomo las medidas del CSS con función "getComputedStyle" y modifico en el HTML las medidas
+const canvas=document.getElementById('cancha')
+var canchaW, canchaH
+var s=getComputedStyle(canvas)
+canchaW = s.width
+canchaH = s.height
 const ctx = canvas.getContext('2d')
-
-// testing
-// ctx.fillRect(0, 0, canvas.width,  canvas,height)
 
 const paddleSound = document.createElement('audio')
 const failSound = document.createElement('audio')
-paddleSound.src='https://actions.google.com/sounds/v1/sports/wooden_bat_hits_baseball_run.ogg'
-failSound.src='https://actions.google.com/sounds/v1/cartoon/instrument_strum.ogg'
+paddleSound.src='https://actions.google.com/sounds/v1/sports/football_punts.ogg'
+failSound.src='../assets/aplausos.mp3'
 const score = {
     left: 0,
     right: 0
 }
-// Esta función crea las paletas. Acepta parámetro de ubicación "x" y "color".
+// Esta función crea las paletas u objetos que colisionarán con la pelota (jugadores y arcos). Acepta parámetro de ubicación "x", "color", etc..
 const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
     x,
     y,
@@ -25,6 +25,12 @@ const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
     draw() {
         ctx.fillStyle=this.color
         ctx.fillRect(this.x, this.y, this.w, this.h)
+        ctx.closePath()
+        ctx.beginPath()
+        ctx.fillStyle="black"
+        ctx.arc(this.x+(w/2), this.y+h/2, w/2, 0, 6.28319)
+        ctx.fill()
+        ctx.closePath()
     },
     moveUp(h){
         if(h<1){return
@@ -43,7 +49,7 @@ const getPaddle = ({x=0, y=0, w=10, h=18, color='orange'}) =>({
     }
 })
 
-// Genero el arco izquierdo como objeto con la misma función que uso para los jugadores)
+// Genero los arcos como objetos con la misma función que uso para los jugadores)
 const leftSoccerGoal=getPaddle({
     x:0,
     y:100,
@@ -66,7 +72,7 @@ const getBall=()=> ({
     r:6,
     w:10,
     h:10,
-    color:'black',
+    color:'#F9E79F',
     directionX: 'right',
     directionY: 'up',
     friction:.7,
@@ -411,7 +417,6 @@ function rightMoveDown(){
 
 // listeners
 addEventListener('keydown', e=>{
-    console.log(e)
         switch(e.keyCode){
         case 87:
             leftMoveUp()
@@ -433,5 +438,13 @@ addEventListener('keydown', e=>{
             break;
     }
 })
-document.addEventListener("click", ballMoving(true))
+
+addEventListener('touchmove',e=>{
+    e.preventDefault();
+    if(e.touches.directionY<0){
+        leftMoveUp()
+    } else {leftMoveDown()}
+
+})
+
 requestAnimationFrame(update)

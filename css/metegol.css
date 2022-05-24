@@ -1,9 +1,12 @@
-
 *, *:before, *:after{
     box-sizing:border-box;
     margin:0;
     padding: 0;
     outline: 0;
+}
+#cancha{
+    width: 100%;
+    height: width/2;
 }
 button{
     color: #0099CC;
@@ -15,8 +18,6 @@ button{
     font-size: 20px;
     margin: 4px 20px;
     font-style: oblique;
-
-
 }
 button:hover {
     background-color: #008CBA;
@@ -41,3 +42,4 @@ button:hover {
     grid-area: btns2;
     display: grid;
 }
+
